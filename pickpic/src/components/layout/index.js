@@ -5,10 +5,8 @@ function PickPicPages(props){
     return(
         <div className="App">
             <nav>
-              <div className="nav-wrapper grey darken-3">
-                <a href="#" className="brand-logo">
-                  PickPic
-                </a>
+              <div className="nav-wrapper grey darken-4 center">
+                <a href="#" className="brand-logo">Mi App</a>
               </div>
             </nav>
             <div className="">

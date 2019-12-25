@@ -7,34 +7,47 @@ class PickPicContainer extends Component{
     constructor(props){
         super(props);
         this.state = {
-            albums: []
+            albums: [],
+            createAlbum: false
         }
         this.onNewAlbum = this.onNewAlbum.bind(this);
+        this.onAddNewAlbum = this.onAddNewAlbum.bind(this);
     }
     
-    //Method to prepare the field of the new album
+    //Method to add new album
     onNewAlbum(){
         this.setState({
             albums:[
                 ...this.state.albums,
                 {
                     albumId: Date.now(),
-                    albumName: '',
+                    albumName: 'Album test',
                     albumDateCreated: Date.now(),
-                    isEditing: true
+                    isEditing: false
                 }
-            ]
+            ],
+            createAlbum: false 
+        });
+    }
+    
+    //method to show the form to add new album
+    onAddNewAlbum(){
+        this.setState({
+            createAlbum: !this.state.createAlbum
         });
     }
 
     render(){
         const {
-            albums
+            albums,
+            createAlbum
         } = this.state;
         return(
             <PickPic
                 albums={albums}
+                createAlbum={createAlbum}
                 onNewAlbum={this.onNewAlbum}
+                onAddNewAlbum={this.onAddNewAlbum}
             />
         );
     }

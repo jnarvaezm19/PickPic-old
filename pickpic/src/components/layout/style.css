@@ -1,4 +1,8 @@
-.brand-logo{
+body{
+    background-color: #eeeeee;
+  }
+  a.brand-logo{
+    color: white;
     font-family: 'Ma Shan Zheng', cursive;
-    font-size: 3em !important;
-}
+    text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+  }
