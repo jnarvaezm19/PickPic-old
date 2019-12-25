@@ -12,8 +12,17 @@ class PickPicContainer extends Component{
         }
         this.onNewAlbum = this.onNewAlbum.bind(this);
         this.onAddNewAlbum = this.onAddNewAlbum.bind(this);
+        //this.conponentDidMount = this.conponentDidMount.bind(this);
     }
     
+    /*conponentDidMount(){
+        const M = window.M;
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.materialboxed');
+            var instances = M.Materialbox.init(elems, {});
+          });
+    }*/
+
     //Method to add new album
     onNewAlbum(){
         this.setState({
@@ -48,6 +57,7 @@ class PickPicContainer extends Component{
                 createAlbum={createAlbum}
                 onNewAlbum={this.onNewAlbum}
                 onAddNewAlbum={this.onAddNewAlbum}
+                //conponentDidMount={this.conponentDidMount}
             />
         );
     }
