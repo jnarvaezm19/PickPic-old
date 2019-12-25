@@ -9,8 +9,14 @@ function PickPicPages(props){
         albums,
         createAlbum,
         onNewAlbum,
+        showGalery,
         onAddNewAlbum,
-        //conponentDidMount
+        photos,
+        onNewPhoto,
+        onAddNewPhoto,
+        onShowGalery,
+        createPhoto,
+        onRemovePhoto
     } = props;
     
     //Begin Load Materialize components
@@ -25,12 +31,12 @@ function PickPicPages(props){
     return(
         <Layout>
             <div className="row">
-            <div className="div-albums">
+            <div className="div-albums col s4">
                 <div className="center">
                     <h5>Albums</h5>
                 </div>
                 <div className="item-list container row center">
-                    <div className="item center col s3">
+                    <div className="item center col s12 m6 l4">
                         <button className=" btn-floating 
                                             btn-large 
                                             waves-effect 
@@ -45,8 +51,8 @@ function PickPicPages(props){
                     </div>
                     {albums.map((album, i) =>
                         album.albumName !== "" ?
-                            <div className="item center col s3 album-item card"
-                                key={album.albumId}>
+                            <div className="item center col s12 m6 album-item card"
+                                key={album.albumId} onClick={onShowGalery}>
                                 <div className="card album-content">
                                     <div className="card-image">
                                         <img src="https://images.freeimages.com/images/large-previews/843/grunge-floral-1154276.jpg"/>
@@ -58,9 +64,9 @@ function PickPicPages(props){
                         <React.Fragment></React.Fragment>
                     )}
                 </div>
-                <div className="container form-group row">
+                <div className=" form-group ">
                     {createAlbum &&
-                        <div className="card col s4">
+                        <div className="card col s12">
                             <div className="center">
                                 <h6>Create An Album</h6>
                             </div>
@@ -77,7 +83,7 @@ function PickPicPages(props){
                     }
                 </div>
             </div>
-            <div className="div-galery">
+            <div className="div-galery col s8">
                 <div className="center">
                     <h5>Galery</h5>
                 </div>
@@ -95,34 +101,103 @@ function PickPicPages(props){
                                 placeholder="Search by date"/>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col s6 m3">
-                        <div className="card">
-                            <div className="card-image">
-                                <img src="https://free-images.com/lg/9f13/jumping_happy_people_female.jpg"
-                                    className="materialboxed"/>
-                                <span className="card-title">
-                                    <input  type="text" 
-                                            className="browser-default inputpb" 
-                                            placeholder="album title"/>
-                                </span>
-                            </div>
-                            <div class="card-content carditem">
-                                <textarea id="textarea2" 
-                                          class=" albumdescription" 
-                                          data-length="145" 
-                                          placeholder="Write the Album description"></textarea>
-                                <label for="textarea2">Description</label>
-                            </div>
-                            <div className="card-action center">
-                                <button className="btn-floating waves-effect waves-light red">
-                                    <i className="material-icons hoverable">delete</i>
+                <div className="">
+                    {showGalery &&
+                        <React.Fragment>
+                            {createPhoto ?
+                                <div class="container center">
+                                <div className="card card-addPhoto row">
+                                    <div className="col s12 m5">
+                                    </div>
+                                    <div className="col s12 m7">
+                                        <h5>
+                                            Add New Photo
+                                        </h5>
+                                        <div className="input-field">
+                                            <i className="material-icons prefix">title</i>
+                                            <input  id="photoTitle" 
+                                                    type="text" 
+                                                    className="validate"/>
+                                            <label for="photoTitle">Photo Title</label>
+                                        </div>
+                                        <div className="input-field">
+                                            <i className="material-icons prefix">mode_edit</i>
+                                            <textarea id="textarea3" 
+                                                    className="form-control txaPhotoDescription
+                                                    materialize-textarea" 
+                                                    data-length="145" 
+                                                    ></textarea>
+                                            <label for="textarea3">Write the Album description</label>
+                                        </div>
+                                        <div className="file-field">
+                                            <div className="btn red darken-4">
+                                                <i className="material-icons">add_a_photo</i>
+                                                <input  type="file" 
+                                                        multiple/>
+                                            </div>
+                                            <div className="file-path-wrapper">
+                                                <input  className="file-path validate" 
+                                                        type="text" 
+                                                        placeholder="Upload one or more files"
+                                                        accept="image/*"/>
+                                            </div>
+                                        </div>
+                                        <div className="btn-group">
+                                            <button className="btn col s6 form-group"
+                                                    onClick={onNewPhoto}>
+                                                Updload
+                                            </button>
+                                            <button className="btn col s6 form-group"
+                                                    onClick={onAddNewPhoto}>
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>                                        
+                            </div> 
+                            :
+                            <React.Fragment>
+                                <div className="col s12">
+                                <button className="btn-floating btn-large waves-effect waves-light red"
+                                        onClick={onAddNewPhoto}>
+                                    <i class="material-icons">add</i>
                                 </button>
                             </div>
-                        </div>
-                    </div>
-
-
+                            </React.Fragment>
+                            }
+                            {photos.map(photo =>
+                                <div className="col s12 m6 l4 container-fluid" key={photo.photoId}>
+                                    <div className="card">
+                                        <div className="card-image">
+                                            <img src={photo.photoUrl}
+                                                className="materialboxed"/>
+                                            <span className="card-title">
+                                                <input  type="text" 
+                                                        value={photo.photoName}
+                                                        className="browser-default inputpb" 
+                                                        placeholder="album title"/>
+                                            </span>
+                                        </div>
+                                        <div class="card-content carditem">
+                                            <textarea id="textarea2" 
+                                                    class=" albumdescription" 
+                                                    data-length="145" 
+                                                    value={photo.photoDescription}
+                                                    placeholder="Write the Album description"></textarea>
+                                            <label for="textarea2">Description</label>
+                                        </div>
+                                        <div className="card-action center">
+                                            <button className="btn-floating waves-effect waves-light red"
+                                                    onClick={() => onRemovePhoto(photo)}>
+                                                <i className="material-icons hoverable">delete</i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                            
+                        </React.Fragment>
+                    }
                 </div>
             </div>
             </div>

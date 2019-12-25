@@ -1,3 +1,6 @@
+html, body{
+    height:100%;
+}
 .item{
     border: dotted 1px gray;
     border-radius: 0.5em;
@@ -8,8 +11,16 @@
     background-color: #fafafa;
     margin: 0.5em;
   }
-.div-albums{
+div.div-albums{
     border-right: solid 1px black;
+    padding: 0 !important;
+    padding-left: 0.5em !important;
+    margin: 0;
+    height: 100% !important;
+}
+.item-list{
+    margin: 0 !important;
+    width: 100%;
 }
 .div-create-album{
     display: flex;
@@ -100,4 +111,15 @@ textarea.albumdescription{
   min-width: 100%;
   width: 100%;
   border: none;
+}
+.txaPhotoDescription{
+    border: solid 1px !important;
+}
+.card-addPhoto{
+    border-radius: 1em;
+    padding: 0.5em;
+    padding-bottom: 2em;
+}
+.btn-group{
+    margin-bottom: 2em;
 }
