@@ -167,7 +167,7 @@ function PickPicPages(props){
                                 </div>
                             </React.Fragment>
                             }
-                            {photos.map(photo =>
+                          {photos.map(photo =>
                                 <div className="col s12 m6 l4 container-fluid" key={photo.photoId}>
                                     <div className="card">
                                         <div className="card-image">
@@ -197,7 +197,6 @@ function PickPicPages(props){
                                     </div>
                                 </div>
                             )}
-
                         </React.Fragment>
                     }
                 </div>
