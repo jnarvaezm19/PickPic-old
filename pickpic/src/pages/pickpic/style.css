@@ -1,6 +1,4 @@
-html, body{
-    height:100%;
-}
+
 .item{
     border: dotted 1px gray;
     border-radius: 0.5em;
@@ -114,6 +112,8 @@ textarea.albumdescription{
 }
 .txaPhotoDescription{
     border: solid 1px !important;
+    border-top: none !important;
+    max-height: 100px !important;
 }
 .card-addPhoto{
     border-radius: 1em;

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PickPic from '../pages/pickpic';
-import $ from 'jquery';
 
 class PickPicContainer extends Component{
 

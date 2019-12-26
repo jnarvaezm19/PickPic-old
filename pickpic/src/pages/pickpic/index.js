@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from '../../components/layout';
 import './style.css';
-import $ from 'jquery';
 import {findDOMNode} from 'react-dom';
 
 function PickPicPages(props){
@@ -17,15 +16,18 @@ function PickPicPages(props){
         onShowGalery,
         createPhoto,
         onRemovePhoto
+        //modalAddPhoto
     } = props;
     
     //Begin Load Materialize components
     const M = window.M;
     document.addEventListener('DOMContentLoaded', function() {
         var materialbox = document.querySelectorAll('.materialboxed');
-        var materialboxInst = M.Materialbox.init(materialbox, {});
+        M.Materialbox.init(materialbox, {});
         var datepicker = document.querySelectorAll('.datepicker');
-        var datepickerInst = M.Datepicker.init(datepicker, {});
+        M.Datepicker.init(datepicker, {});
+        //var modal = document.querySelectorAll('.modal');
+        //var modalInst = M.Modal.init(modal, {});
     });
     //End load Materialize components 
     return(
@@ -73,7 +75,7 @@ function PickPicPages(props){
                             <div className="input-field div-create-album">
                                 <input  type="text"
                                         id="txtAlbumName"/>
-                                <label for="txtAlbumName">Album Name</label>
+                                <label htmlFor="txtAlbumName">Album Name</label>
                                 <button className="waves-effect waves-light btn-small blue"
                                         onClick={onNewAlbum}>
                                     <i className="material-icons">save</i>
@@ -89,7 +91,7 @@ function PickPicPages(props){
                 </div>
                 <div className="row">
                     <div className="input-field col s6">
-                        <i class="material-icons prefix">search</i>
+                        <i className="material-icons prefix">search</i>
                         <input  type="text" 
                                 className="form-control " 
                                 placeholder="Search by description or title" 
@@ -97,7 +99,7 @@ function PickPicPages(props){
                     </div>
                     <div className="input-field col s6">
                         <input  type="text" 
-                                class="datepicker" 
+                                className="datepicker" 
                                 placeholder="Search by date"/>
                     </div>
                 </div>
@@ -105,9 +107,9 @@ function PickPicPages(props){
                     {showGalery &&
                         <React.Fragment>
                             {createPhoto ?
-                                <div class="container center">
-                                <div className="card card-addPhoto row">
-                                    <div className="col s12 m5">
+                                <div className="container center">
+                                    <div className="card card-addPhoto row">
+                                        <div className="col s12 m5">
                                     </div>
                                     <div className="col s12 m7">
                                         <h5>
@@ -118,7 +120,7 @@ function PickPicPages(props){
                                             <input  id="photoTitle" 
                                                     type="text" 
                                                     className="validate"/>
-                                            <label for="photoTitle">Photo Title</label>
+                                            <label htmlFor="photoTitle">Photo Title</label>
                                         </div>
                                         <div className="input-field">
                                             <i className="material-icons prefix">mode_edit</i>
@@ -127,7 +129,7 @@ function PickPicPages(props){
                                                     materialize-textarea" 
                                                     data-length="145" 
                                                     ></textarea>
-                                            <label for="textarea3">Write the Album description</label>
+                                            <label htmlFor="textarea3">Write the Album description</label>
                                         </div>
                                         <div className="file-field">
                                             <div className="btn red darken-4">
@@ -158,11 +160,11 @@ function PickPicPages(props){
                             :
                             <React.Fragment>
                                 <div className="col s12">
-                                <button className="btn-floating btn-large waves-effect waves-light red"
-                                        onClick={onAddNewPhoto}>
-                                    <i class="material-icons">add</i>
-                                </button>
-                            </div>
+                                    <button className="btn-floating btn-large waves-effect waves-light red"
+                                            onClick={onAddNewPhoto}>
+                                        <i className="material-icons">add</i>
+                                    </button>
+                                </div>
                             </React.Fragment>
                             }
                             {photos.map(photo =>
@@ -173,18 +175,18 @@ function PickPicPages(props){
                                                 className="materialboxed"/>
                                             <span className="card-title">
                                                 <input  type="text" 
-                                                        value={photo.photoName}
+                                                        value={photo.photoDescription}
                                                         className="browser-default inputpb" 
                                                         placeholder="album title"/>
                                             </span>
                                         </div>
-                                        <div class="card-content carditem">
+                                        <div className="card-content carditem">
                                             <textarea id="textarea2" 
-                                                    class=" albumdescription" 
+                                                    className=" albumdescription" 
                                                     data-length="145" 
-                                                    value={photo.photoDescription}
+                                                    value={photo.photoName}
                                                     placeholder="Write the Album description"></textarea>
-                                            <label for="textarea2">Description</label>
+                                            <label htmlFor="textarea2">Description</label>
                                         </div>
                                         <div className="card-action center">
                                             <button className="btn-floating waves-effect waves-light red"
@@ -195,7 +197,7 @@ function PickPicPages(props){
                                     </div>
                                 </div>
                             )}
-                            
+
                         </React.Fragment>
                     }
                 </div>
